@@ -52,15 +52,15 @@
                                                   </a>
                                                   @endcan
                                                   @can('update-user')
-                                                  <a href="{{ route('users.edit', $user) }}" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                  <a href="{{ route('users.edit', $user) }}" class="ml-1 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                     Edit
                                                   </a>
                                                   @endcan
                                                   @can('delete-user')
-                                                  <form action="{{route('users.destroy',$user)}}" method="post">
+                                                  <form action="{{route('users.destroy',$user)}}" method="post" >
                                                       @csrf
                                                       @method('DELETE')
-                                                      <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="confirm('are you sure?')">
+                                                      <button type="submit" class="ml-1 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="return confirm('are you sure?')">
                                                           {{ __('Delete') }}
                                                         </button>
                                                   </form>
