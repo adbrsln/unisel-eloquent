@@ -43,25 +43,30 @@
                                             {{ $user->email }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            @can('view-user')
-                                              <a href="{{ route('users.show', $user) }}" class="text-indigo-600 hover:text-indigo-900">
-                                                  {{ __('View') }}
-                                              </a>
-                                            @endcan
-                                            @can('update-user')
-                                              <a href="{{ route('users.edit', $user) }}" class="ml-3 text-indigo-600 hover:text-indigo-900">
-                                                  {{ __('Edit') }}
-                                              </a>
-                                            @endcan
-                                            @can('delete-user')
-                                            <form action="{{route('users.destroy',$user)}}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="ml-3 text-red-600 hover:text-red-900" onclick="confirm('are you sure?')">
-                                                {{ __('Delete') }}
-                                                </button>
-                                            </form>
-                                            @endcan
+                                            <div>
+
+                                                <div class="flex justify-end">
+                                                    @can('view-user')
+                                                  <a href="{{ route('users.show', $user) }}" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    View
+                                                  </a>
+                                                  @endcan
+                                                  @can('update-user')
+                                                  <a href="{{ route('users.edit', $user) }}" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    Edit
+                                                  </a>
+                                                  @endcan
+                                                  @can('delete-user')
+                                                  <form action="{{route('users.destroy',$user)}}" method="post">
+                                                      @csrf
+                                                      @method('DELETE')
+                                                      <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="confirm('are you sure?')">
+                                                          {{ __('Delete') }}
+                                                        </button>
+                                                  </form>
+                                                  @endcan
+                                                </div>
+                                              </div>
                                         </td>
                                     </tr>
                                 @endforeach
