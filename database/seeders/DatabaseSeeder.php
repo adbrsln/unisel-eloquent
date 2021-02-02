@@ -13,6 +13,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(PermissionSeeder::class);
+
+    	$this->seedDevelopment();
+    }
+
+    private function seedDevelopment()
+    {
+        if(app()->environment() != 'production') {
+            \App\Models\User::factory()->create([
+                'name' => 'Superadmin',
+                'email' => 'super@app.com',
+            ])
+            ->assignRole('superadmin')
+            ->assignRole('user');
+
+            \App\Models\User::factory()->create([
+                'name' => 'Administrator',
+                'email' => 'admin@app.com',
+            ])
+            ->assignRole('administrator')
+            ->assignRole('user');
+
+            \App\Models\User::factory(10)
+                ->create()
+                ->each(function($user) {
+                    $user->assignRole('user');
+                });
+        }
     }
 }
