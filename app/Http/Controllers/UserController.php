@@ -117,12 +117,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if(auth()->user()->id == $user->id) {
-            alert()->warning('User', 'You cannot delete yourself.');
+            // alert()->warning('User', 'You cannot delete yourself.');
             return redirect()->route('users.index');
         }
         $user->delete();
 
-        alert()->success('User', 'User successfully deleted');
+        // alert()->success('User', 'User successfully deleted');
 
         return redirect()->route('users.index');
     }
