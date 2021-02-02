@@ -57,7 +57,7 @@
                                             <form action="{{route('users.destroy',$user)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="ml-3 text-red-600 hover:text-red-900">
+                                                <button type="submit" class="ml-3 text-red-600 hover:text-red-900" onclick="confirm('are you sure?')">
                                                 {{ __('Delete') }}
                                                 </button>
                                             </form>
