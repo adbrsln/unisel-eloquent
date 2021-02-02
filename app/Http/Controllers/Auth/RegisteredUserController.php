@@ -37,13 +37,14 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
         ]);
-
-        Auth::login($user = User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]));
+        ]);
 
+        $user->assignRole('user');
+        Auth::login($user);
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
